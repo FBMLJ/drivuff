@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "205382741798",
+    "firebase_url": "https://backmovel-f67cd.firebaseio.com",
+    "project_id": "backmovel-f67cd",
+    "storage_bucket": "backmovel-f67cd.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:205382741798:android:c894df26917e77e5775be7",
+        "android_client_info": {
+          "package_name": "id.uff.br.flutter_app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "205382741798-4602nhthspaa4atpn278s2bt5t03vs2s.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCqh1RQdtQEalVCDmKUuOi2ZpbqLk4m5Q8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "205382741798-4602nhthspaa4atpn278s2bt5t03vs2s.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import '../components/CustomButton.dart';
 import '../components/CustomTextField.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 
 //codigo responsavel pelo exibição da tela de cadastro
 class CadastroPage extends StatefulWidget {
@@ -14,7 +15,24 @@ class _CadastroPageState extends State<CadastroPage> {
   TextEditingController _controllerEmail = TextEditingController(text: "");
   TextEditingController _controllerPassword = TextEditingController(text: "");
   TextEditingController _controllerName = TextEditingController(text: "");
+
   //metodos
+  _onSeding(){
+    String email = this._controllerEmail.text;
+    String password = this._controllerPassword.text;
+
+
+    FirebaseAuth auth = FirebaseAuth.instance;
+
+    auth.createUserWithEmailAndPassword(email: email, password: password)
+        //será executado se conseguir criar um usuario
+        .then((value) => {print("sucesso")
+    })
+        //será executado quando falhar em criar um usuario
+        .catchError((e)=>print("falha"));
+
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -53,7 +71,7 @@ class _CadastroPageState extends State<CadastroPage> {
                             CustomTextField(lable: 'Nome', keyboard: TextInputType.name,controller: this._controllerName,),
                             CustomTextField(lable: 'Email', keyboard: TextInputType.emailAddress,controller: this._controllerEmail),
                             CustomTextField(lable: 'Senha',password: true, controller: this._controllerPassword,),
-                            CustomButton(buttonText: "Enviar", onPress: ()=>{},),
+                            CustomButton(buttonText: "Enviar", onPress: ()=>{this._onSeding()},),
                             CustomButton(buttonText: "Volta", onPress: ()=>{Navigator.pop(context)
                             }),
                           ]

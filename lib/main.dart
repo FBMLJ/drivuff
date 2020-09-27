@@ -1,8 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_app/screen/Cadastro.dart';
 import 'package:flutter_app/screen/Login.dart';
+import 'package:firebase_core/firebase_core.dart';
 
-void main() {
+
+void main() async{
+  //treicho de codigo para adicionar o acionar o firebase em todo projeto
+  await Firebase.initializeApp();
+  //rodar o projeto
   runApp(MyApp());
 }
 
@@ -11,6 +16,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+
       title: 'Flutter Demo',
       theme: ThemeData(
         primarySwatch: Colors.blue,
@@ -18,6 +24,7 @@ class MyApp extends StatelessWidget {
       ),
       //parte do codigo relacionada ao roteamento do aplicativo
       initialRoute: '/',
+
       routes: {
         '/': (context) => LoginPage(),
         '/cadastro': (context) => CadastroPage()
