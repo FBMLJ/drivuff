@@ -2,7 +2,10 @@ import 'package:flutter/material.dart';
 import '../components/CustomButton.dart';
 import '../components/CustomTextField.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+
 import '../model/User.dart';
+
 
 //codigo responsavel pelo exibição da tela de cadastro
 class CadastroPage extends StatefulWidget {
@@ -34,7 +37,9 @@ class _CadastroPageState extends State<CadastroPage> {
 
     auth.createUserWithEmailAndPassword(email: email, password: password)
         //será executado se conseguir criar um usuario
-        .then((value) => {print("sucesso")
+        .then((firebaseUser) {
+          FirebaseFirestore db = FirebaseFirestore.instance;
+          db.collection("user").document( firebaseUser.user.uid ).setData(user.toMap());
     })
         //será executado quando falhar em criar um usuario
         .catchError((e)=>print("falha"));

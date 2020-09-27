@@ -8,16 +8,15 @@ class UserModel{
 
   bool validateDateLogin(){
     bool auxValue = true;
-
     //se o nome tiver vazio
     if (this.email.isEmpty){
       auxValue =false;
       errorsMessage[1]= "Email não informado";
     }
-    if (RegExp(r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+").hasMatch(email)){
-      auxValue = false;
-      errorsMessage[1] = "Esse email é invalido";
-    }
+    // if (RegExp(r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+").hasMatch(email)){
+    //   auxValue = false;
+    //   errorsMessage[1] = "Esse email é invalido";
+    // }
 
     if (this.password.isEmpty ){
       auxValue = false;
@@ -39,4 +38,16 @@ class UserModel{
     }
     return auxValue;
   }
+
+  Map<String, dynamic> toMap(){
+
+    Map<String, dynamic> map = {
+      "nome" : this.name,
+      "email" : this.email
+    };
+
+    return map;
+
+  }
+
 }
