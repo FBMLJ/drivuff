@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 class UserModel{
   String name, email, password;
+  bool admin =false;
   //uma lista de erros que podem ser encontrados o primeiro nome, o segundo  email e o terceiro senha
   List errorsMessage = ["","",""];
   UserModel(this.name,this.email,this.password );

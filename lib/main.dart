@@ -6,12 +6,14 @@ import 'package:firebase_core/firebase_core.dart';
 
 void main() async{
   //treicho de codigo para adicionar o acionar o firebase em todo projeto
-  // await Firebase.initializeApp();
+
   //rodar o projeto
   runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
+  final Future<FirebaseApp> _initialization = Firebase.initializeApp();
+
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
