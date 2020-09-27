@@ -11,18 +11,18 @@ class UserModel{
     //se o nome tiver vazio
     if (this.email.isEmpty){
       auxValue =false;
-      errorsMessage[0]= "Email não informado";
+      errorsMessage[1]= "Email não informado";
     }
     if (RegExp(r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+").hasMatch(email)){
       auxValue = false;
       errorsMessage[1] = "Esse email é invalido";
     }
 
-    if (this.password.isEmpty){
+    if (this.password.isEmpty ){
       auxValue = false;
       errorsMessage[2]="Senha não informada";
     }
-    if (this.password.length < 6){
+    if (this.password.length < 6 && this.password.length!= 0){
       auxValue = false;
       errorsMessage[2]="Senha muito curta";
     }

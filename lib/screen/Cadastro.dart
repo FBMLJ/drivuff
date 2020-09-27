@@ -26,7 +26,7 @@ class _CadastroPageState extends State<CadastroPage> {
 
     UserModel user = UserModel( name,email, password);
     print(user.validateDateRegister());
-    if (user.validateDateRegister()){
+    if (!user.validateDateRegister()){
       print(user.errorsMessage);
       return;
     }
