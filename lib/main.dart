@@ -6,7 +6,7 @@ import 'package:firebase_core/firebase_core.dart';
 
 void main() async{
   //treicho de codigo para adicionar o acionar o firebase em todo projeto
-  await Firebase.initializeApp();
+  // await Firebase.initializeApp();
   //rodar o projeto
   runApp(MyApp());
 }

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import '../components/CustomButton.dart';
 import '../components/CustomTextField.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import '../model/User.dart';
 
 //codigo responsavel pelo exibição da tela de cadastro
 class CadastroPage extends StatefulWidget {
@@ -20,8 +21,15 @@ class _CadastroPageState extends State<CadastroPage> {
   _onSeding(){
     String email = this._controllerEmail.text;
     String password = this._controllerPassword.text;
+    String name = this._controllerName.text;
 
 
+    UserModel user = UserModel( name,email, password);
+    print(user.validateDateRegister());
+    if (user.validateDateRegister()){
+      print(user.errorsMessage);
+      return;
+    }
     FirebaseAuth auth = FirebaseAuth.instance;
 
     auth.createUserWithEmailAndPassword(email: email, password: password)
