@@ -14,23 +14,28 @@ class CadastroPage extends StatefulWidget {
 }
 
 class _CadastroPageState extends State<CadastroPage> {
-
   //atributos
   TextEditingController _controllerEmail = TextEditingController(text: "");
   TextEditingController _controllerPassword = TextEditingController(text: "");
   TextEditingController _controllerName = TextEditingController(text: "");
-
   //metodos
   _onSeding(){
     String email = this._controllerEmail.text;
     String password = this._controllerPassword.text;
     String name = this._controllerName.text;
+    //alerta
+    void _showAlert (BuildContext context) {
+      showDialog(context: context,
+      builder: (context)=>AlertDialog(
+        title: Text("Problemas ao enviar")
+      ));
+    };
 
 
     UserModel user = UserModel( name,email, password);
     print(user.validateDateRegister());
     if (!user.validateDateRegister()){
-      print(user.errorsMessage);
+      _showAlert(context);
       return;
     }
     FirebaseAuth auth = FirebaseAuth.instance;
@@ -42,7 +47,7 @@ class _CadastroPageState extends State<CadastroPage> {
           db.collection("user").document( firebaseUser.user.uid ).setData(user.toMap());
     })
         //será executado quando falhar em criar um usuario
-        .catchError((e)=>print("falha"));
+        .catchError((e)=>print(e));
 
   }
 
