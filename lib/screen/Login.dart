@@ -1,8 +1,11 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 // importando o custom field
 import '../components/CustomTextField.dart';
 //importando o custom button
 import '../components/CustomButton.dart';
+import '../model/User.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 
 //codigo responsavel pelo exibição da tela de login
 class LoginPage extends StatefulWidget {
@@ -21,8 +24,16 @@ class _LoginPageState extends State<LoginPage> {
   TextEditingController _controllerPassword = TextEditingController(text: "");
   //metodos
   _sendForm(){
-    print(this._controllerPassword.text);
-    print(this._controllerEmail.text);
+    UserModel user = UserModel('', this._controllerEmail.text,this._controllerPassword.text);
+    if (user.validateDateLogin()){
+
+      FirebaseAuth auth = FirebaseAuth.instance;
+      auth.signInWithEmailAndPassword(email: user.email, password: user.password)
+          .then((value) => Navigator.pushNamedAndRemoveUntil(context, '/home', (_) => false));
+    }
+    else{
+      print("Error");
+    }
   }
 
 

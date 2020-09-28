@@ -45,6 +45,7 @@ class _CadastroPageState extends State<CadastroPage> {
         .then((firebaseUser) {
           FirebaseFirestore db = FirebaseFirestore.instance;
           db.collection("user").document( firebaseUser.user.uid ).setData(user.toMap());
+          Navigator.pushNamedAndRemoveUntil(context, "/home", (_) => false);
     })
         //será executado quando falhar em criar um usuario
         .catchError((e)=>print(e));
