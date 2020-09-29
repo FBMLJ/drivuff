@@ -7,12 +7,12 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  String email="";
+
 
   @override
   void initState() {
     FirebaseAuth auth = FirebaseAuth.instance;
-    email = auth.currentUser.email;
+
     super.initState();
   }
 
@@ -23,7 +23,7 @@ class _HomePageState extends State<HomePage> {
       color: Colors.white,
       child: Column(
         children:<Widget>[
-          Text(this.email),
+          Text("Home"),
           CustomButton(buttonText: "Deslogar",onPress: (){
             FirebaseAuth auth = FirebaseAuth.instance;
             auth.signOut();
