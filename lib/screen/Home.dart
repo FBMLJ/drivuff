@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import '../components/CustomButton.dart';
+import '../components/CustomMenuButton.dart';
 import '../components/Folder.dart';
 class HomePage extends StatefulWidget {
   @override
@@ -25,7 +25,10 @@ class _HomePageState extends State<HomePage> {
       drawer: Drawer(
         child: Column(
           children: <Widget>[
-            CustomButton(buttonText: "Deslogar",onPress: (){
+            Container(
+              height: 80,
+            ),
+            CustomMenuButton(buttonText: "Deslogar",image: 'imagens/logout.svg',textColor: Colors.red,onPress: (){
               FirebaseAuth auth = FirebaseAuth.instance;
               auth.signOut();
 
