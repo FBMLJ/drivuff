@@ -18,7 +18,29 @@ class LoginPage extends StatefulWidget {
 }
 
 class _LoginPageState extends State<LoginPage> {
+  // confirma se o usuario não está logado
+  Future _verificarUsuarioLogado()  async{
+
+    FirebaseAuth auth = FirebaseAuth.instance;
+    //auth.signOut();
+    User usuarioLogado = await auth.currentUser;
+    print(usuarioLogado);
+
+    if( usuarioLogado != null ){
+      Navigator.pushReplacementNamed(context, "/home");
+    }
+
+  }
+
   @override
+  void initState() {
+    _verificarUsuarioLogado();
+    print("Teste");
+    super.initState();
+  }
+
+
+
   //atributos
   TextEditingController _controllerEmail = TextEditingController(text: "");
   TextEditingController _controllerPassword = TextEditingController(text: "");
