@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import '../components/CustomButton.dart';
+import '../components/Folder.dart';
 class HomePage extends StatefulWidget {
   @override
   _HomePageState createState() => _HomePageState();
@@ -35,7 +36,8 @@ class _HomePageState extends State<HomePage> {
                 auth.signOut();
 
                 Navigator.pushNamedAndRemoveUntil(context, "/", (_) => false);
-              })
+              }),
+              Folder()
             ],
           )
       )
