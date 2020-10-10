@@ -21,25 +21,35 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text("Seja Bem Vindo"),),
+      appBar: AppBar(title: Text("Seus Cursos"),),
       drawer: Drawer(
-        child: Text("Lucas"),
+        child: Column(
+          children: <Widget>[
+            CustomButton(buttonText: "Deslogar",onPress: (){
+              FirebaseAuth auth = FirebaseAuth.instance;
+              auth.signOut();
+
+              Navigator.pushNamedAndRemoveUntil(context, "/", (_) => false);
+            }),
+          ],
+        ),
       ),
       body: Container(
           width: MediaQuery.of(context).size.width,
-          color: Colors.white,
-          child: Column(
-            children:<Widget>[
-              Text("Home"),
-              CustomButton(buttonText: "Deslogar",onPress: (){
-                FirebaseAuth auth = FirebaseAuth.instance;
-                auth.signOut();
 
-                Navigator.pushNamedAndRemoveUntil(context, "/", (_) => false);
-              }),
-              Folder()
-            ],
+          height: MediaQuery.of(context).size.height,
+          color: Colors.white,
+          child: SingleChildScrollView(
+              child: Wrap(
+
+                children:<Widget>[
+
+
+                ],
+
+              )
           )
+
       )
 
     );
