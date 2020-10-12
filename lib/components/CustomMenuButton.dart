@@ -20,7 +20,7 @@ class CustomMenuButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       child: SizedBox(
-          width: double.infinity,
+          width: 80,
           height: 60,
           child: FlatButton(
             color: this.buttonColor,

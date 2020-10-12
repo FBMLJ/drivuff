@@ -40,14 +40,13 @@ class _HomePageState extends State<HomePage> {
       body: Container(
           width: MediaQuery.of(context).size.width,
 
-          height: MediaQuery.of(context).size.height,
           color: Colors.white,
           child: SingleChildScrollView(
               child: Wrap(
-
+                
                 children:<Widget>[
 
-
+                  Folder()
                 ],
 
               )
