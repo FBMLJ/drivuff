@@ -65,43 +65,34 @@ class _LoginPageState extends State<LoginPage> {
 
             width: MediaQuery.of(context).size.width ,
             height: MediaQuery.of(context).size.height  ,
-          decoration: BoxDecoration(
-            //gradiente
-              gradient: LinearGradient(
-                  begin: Alignment.topRight,
-                  end: Alignment.bottomLeft,
-                  colors: [Colors.blue, Colors.greenAccent]
-              )
-          ),
+            color: Colors.white,
+            
             child: Center(
-              child: Padding(
-
-                padding: EdgeInsets.all(10),
                   //esse codigo cria um retangulo no meio da tela
                   child: Container(
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(10),
-                      color: Colors.white.withOpacity(.5),
-
-                    ),
-                    width: MediaQuery.of(context).size.width *.7 ,
-                    height: MediaQuery.of(context).size.height *.5  ,
+                   
+                    width: MediaQuery.of(context).size.width *1 ,
+                    height: MediaQuery.of(context).size.height *.75  ,
 
                     child: Column(
+                        
                         children: <Widget>[
-                          Text("Login", style: TextStyle(
-                              color: Colors.white,
+                          Text("Entrar", style: TextStyle(
+                              color: Colors.black,
                               fontSize: 30
                             )),
+                          Container(height: 150,), //esse container serve para simbolizar o logo
                           CustomTextField(lable: 'Email', keyboard: TextInputType.emailAddress,controller: this._controllerEmail,),
+                          SizedBox(height: 10,),
                           CustomTextField(lable: 'Senha',password: true,controller: this._controllerPassword,),
                           CustomButton(buttonText: "Enviar", onPress: (){this._sendForm();},),
                           CustomButton(buttonText: "Cadastre-se", onPress: ()=>{Navigator.pushNamed(context,'/cadastro')
                           }),
                         ]
+                        
                     )
                   )
-                )
+                
           )
 
         ),

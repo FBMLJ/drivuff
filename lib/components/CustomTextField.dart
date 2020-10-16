@@ -27,10 +27,19 @@ class CustomTextField extends StatelessWidget {
         child: TextField(
           controller: this.controller,
           keyboardType: this.keyboard,
+          
           obscureText: this.password,
           decoration: InputDecoration(
-            labelText: this.lable,
-              contentPadding:  EdgeInsets.only(left: 20.0)
+            hintText: this.lable,
+            fillColor: Color(0x44dddddd),
+            filled: true,
+              contentPadding:  EdgeInsets.only(left: 20.0),
+              enabledBorder: OutlineInputBorder(
+                borderSide: BorderSide(color: Color(0x88dddddd)),
+              ),
+              border:  OutlineInputBorder(
+                borderSide: BorderSide(color: Color(0x88dddddd)),
+              )
           ),
         ),
       )
