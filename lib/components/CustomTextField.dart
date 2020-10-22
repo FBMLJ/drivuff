@@ -27,7 +27,7 @@ class CustomTextField extends StatelessWidget {
         child: TextField(
           controller: this.controller,
           keyboardType: this.keyboard,
-          
+          autofocus: false,
           obscureText: this.password,
           decoration: InputDecoration(
             hintText: this.lable,

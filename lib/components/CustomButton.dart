@@ -13,25 +13,32 @@ class CustomButton extends StatelessWidget {
   final Color buttonColor;
   final Color textColor;
   final onPress;
-  const CustomButton({Key key, this.buttonText, this.buttonColor=Colors.lightGreen, this.textColor=Colors.white, this.onPress }) : super(key: key);
+  const CustomButton({Key key, this.buttonText, this.buttonColor=Colors.green, this.textColor=Colors.white, this.onPress }) : super(key: key);
   @override
   Widget build(BuildContext context) {
     return Container(
-        child: RaisedButton(
-          color: this.buttonColor,
-          onPressed: this.onPress,
-          shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(10),
-              side: BorderSide(color: this.buttonColor),
-          ),
-          child: Text(
-            this.buttonText,
-            style: TextStyle(
-              color: this.textColor,
-              fontSize: 15
+        child:FractionallySizedBox(
+        widthFactor: 0.8,
+          child: RaisedButton(
+            color: this.buttonColor,
+            onPressed: this.onPress,
+            
+            shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(20),
+                side: BorderSide(color: this.buttonColor),
             ),
-          ),
-        )
+            child: Padding(
+                padding: EdgeInsets.only(top: 12.0, bottom: 12),
+              child: Text(
+                this.buttonText,
+                style: TextStyle(
+                  color: this.textColor,
+                  fontSize: 15
+                ),
+              ),
+            )
+          )
+      )
     );
   }
 }

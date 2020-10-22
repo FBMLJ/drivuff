@@ -61,40 +61,40 @@ class _CadastroPageState extends State<CadastroPage> {
           height: MediaQuery.of(context).size.height  ,
           decoration: BoxDecoration(
             //gradiente
-              gradient: LinearGradient(
-                  begin: Alignment.topRight,
-                  end: Alignment.bottomLeft,
-                  colors: [Colors.blue, Colors.greenAccent]
-              )
+              
           ),
           child: Center(
-              child: Padding(
-                  padding: EdgeInsets.all(10),
                   //esse codigo cria um retangulo no meio da tela
+                  child: Padding(
+                  padding: EdgeInsets.only(top: 100),
                   child: Container(
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(10),
-                        color: Colors.white.withOpacity(.5),
-
-                      ),
-                      width: MediaQuery.of(context).size.width *.7 ,
-                      height: MediaQuery.of(context).size.height *.5  ,
-
+                      
+                      
                       child: Column(
                           children: <Widget>[
-                            Text("Cadastro", style: TextStyle(
-                                color: Colors.white,
-                                fontSize: 30
-                            )),
+                             Row(children: <Widget>[
+                              SizedBox(width: 30,),
+                              
+                              GestureDetector(onTap: ()=>{Navigator.pop(context)},child: Text("x",style: TextStyle(color: Colors.grey, fontSize: 30))),
+                              SizedBox(width: 90,),
+                                Text("Nova Conta",style: TextStyle(
+                                  color: Colors.black,
+                                  fontSize: 30
+                                ))
+                              ],),
 
+                            SizedBox(height: 40,),
                             CustomTextField(lable: 'Nome', keyboard: TextInputType.name,controller: this._controllerName,),
+                            SizedBox(height: 20,),
                             CustomTextField(lable: 'Email', keyboard: TextInputType.emailAddress,controller: this._controllerEmail),
+                            SizedBox(height: 20,),
                             CustomTextField(lable: 'Senha',password: true, controller: this._controllerPassword,),
-                            CustomButton(buttonText: "Enviar", onPress: ()=>{this._onSeding()},),
-                            CustomButton(buttonText: "Volta", onPress: ()=>{Navigator.pop(context)
-                            }),
+                            SizedBox(height: 20,),
+                            CustomButton(buttonText: "Sign Up", onPress: ()=>{this._onSeding()},),
+                            // CustomButton(buttonText: "Volta", onPress: ()=>{),
                           ]
                       )
+                  
                   )
               )
           )

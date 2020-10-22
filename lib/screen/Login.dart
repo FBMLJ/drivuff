@@ -85,9 +85,11 @@ class _LoginPageState extends State<LoginPage> {
                           CustomTextField(lable: 'Email', keyboard: TextInputType.emailAddress,controller: this._controllerEmail,),
                           SizedBox(height: 10,),
                           CustomTextField(lable: 'Senha',password: true,controller: this._controllerPassword,),
-                          CustomButton(buttonText: "Enviar", onPress: (){this._sendForm();},),
-                          CustomButton(buttonText: "Cadastre-se", onPress: ()=>{Navigator.pushNamed(context,'/cadastro')
-                          }),
+                          SizedBox(height: 70,),
+                          CustomButton(buttonText: "Log in", onPress: (){this._sendForm();},),
+                          SizedBox(height: 15,),
+                          GestureDetector(onTap: ()=>{Navigator.pushNamed(context,'/cadastro')},
+                            child: Text("Criar Conta",style: TextStyle(color: Colors.green, fontSize: 18))),
                         ]
                         
                     )
