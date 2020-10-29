@@ -23,6 +23,7 @@ class _CadastroPageState extends State<CadastroPage> {
     String email = this._controllerEmail.text;
     String password = this._controllerPassword.text;
     String name = this._controllerName.text;
+    
     //alerta
     void _showAlert (BuildContext context) {
       showDialog(context: context,
@@ -44,7 +45,7 @@ class _CadastroPageState extends State<CadastroPage> {
         //será executado se conseguir criar um usuario
         .then((firebaseUser) {
           FirebaseFirestore db = FirebaseFirestore.instance;
-          db.collection("user").document( firebaseUser.user.uid ).setData(user.toMap());
+          db.collection("user").doc( firebaseUser.user.uid ).set(user.toMap());
           Navigator.pushNamedAndRemoveUntil(context, "/home", (_) => false);
     })
         //será executado quando falhar em criar um usuario

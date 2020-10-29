@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import '../components/CustomMenuButton.dart';
@@ -13,7 +14,10 @@ class _HomePageState extends State<HomePage> {
   @override
   void initState() {
     FirebaseAuth auth = FirebaseAuth.instance;
-
+    FirebaseFirestore db = FirebaseFirestore.instance;
+    db.collection("user").where("user.admin", isEqualTo: true).get().then((value) {
+      if (value.docs.length == 0) db.collection("user").doc(auth.currentUser.uid).update({"admin": true});
+    });
     super.initState();
   }
 
