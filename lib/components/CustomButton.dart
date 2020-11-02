@@ -29,6 +29,7 @@ class CustomButton extends StatelessWidget {
               borderRadius: BorderRadius.circular(10),
               side: BorderSide(color: this.buttonColor),
 
+
           ),
           child: Text(
             this.buttonText,

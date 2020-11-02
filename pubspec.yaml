@@ -30,6 +30,14 @@ dependencies:
   cloud_firestore: ^0.14.0+2
   #firebase_storage: ^3.1.6
   firebase_storage: ^4.0.1
+  mobx: ^0.4.0
+  flutter_mobx: ^0.3.4
+  provider: ^4.0.1
+  dio: ^3.0.8
+  intl: ^0.16.1
+  file_picker: 1.4.3+1
+  image_viewer: ^0.5.2
+  firebase_image: 0.2.0
 
 
   # The following adds the Cupertino Icons font to your application.
@@ -39,6 +47,8 @@ dependencies:
 dev_dependencies:
   flutter_test:
     sdk: flutter
+  build_runner:
+  mobx_codegen:
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
@@ -52,9 +62,10 @@ flutter:
   uses-material-design: true
 
   # To add assets to your application, add an assets section, like this:
-  # assets:
-  #   - images/a_dot_burr.jpeg
-  #   - images/a_dot_ham.jpeg
+  assets:
+    - assets/images/avimp3mpgflv.png
+    - assets/images/figuras.png
+    - assets/pdfdocpptxls.png
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.

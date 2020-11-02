@@ -72,6 +72,7 @@ class _LoginPageState extends State<LoginPage> {
     auth.signInWithEmailAndPassword(
         email: usuario.email,
         password: usuario.senha
+
     ).then((firebaseUser){
 
       Navigator.pushReplacementNamed(context, "/home");

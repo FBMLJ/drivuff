@@ -1,4 +1,3 @@
-
 class Usuario {
 
   String _idUsuario;
@@ -13,7 +12,8 @@ class Usuario {
 
     Map<String, dynamic> map = {
       "nome" : this.nome,
-      "email" : this.email
+      "email" : this.email,
+      "idUsuario": this.idUsuario,
     };
 
     return map;
