@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 
 /*
 * Esse componente para colocar os botões do aplicativo para isso precisa preencher os seguintes atributos
@@ -39,8 +38,7 @@ class CustomMenuButton extends StatelessWidget {
                   ),
                 ),
                 Container(width: 20,),
-                SvgPicture.asset("imagens/logout.svg", color: Colors.red,width: 30,height: 30,),
-
+                
               ],
             )
 
