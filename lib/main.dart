@@ -3,6 +3,8 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:flutter_app/screen/Cadastro.dart';
 import 'package:flutter_app/screen/Login.dart';
+import 'package:flutter_app/screen/AdminPage.dart';
+
 import 'package:flutter_app/screen/Home.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter_app/stores/app.store.dart';
@@ -51,6 +53,8 @@ class MyApp extends StatelessWidget {
             '/': (context) => LoginPage(),
             '/cadastro': (context) => CadastroPage(),
             '/home': (context) => Home(title: 'Histórico'),
+            '/admin_page': (context) => AdminPage()
+            
             }
           )
         );

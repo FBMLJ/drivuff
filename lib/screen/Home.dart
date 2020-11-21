@@ -1,3 +1,4 @@
+import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_app/components/CustomButton.dart';
@@ -9,6 +10,10 @@ import 'package:flutter_app/themes/app.theme.dart';
 import 'package:flutter_app/widgets/File-list.widget.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:provider/provider.dart';
+
+import 'package:firebase_auth/firebase_auth.dart';
+
+import 'package:cloud_firestore/cloud_firestore.dart';
 
 class Home extends StatefulWidget {
   Home({Key key, this.title}) : super(key: key);
@@ -24,6 +29,27 @@ class _HomePageState extends State<Home> {
   bool uploadfile = false;
   get key => null;
 
+  @override
+  void initState()  {
+    print('------------------------------------------------------------------------------------');
+    User user = FirebaseAuth.instance.currentUser;
+    if (user != null){
+      _checkAdmin(user);
+    }
+
+    super.initState();
+  }
+  Future _checkAdmin(User user) async{
+    FirebaseFirestore firebaseStore = FirebaseFirestore.instance;
+    DocumentSnapshot collectionStream = await firebaseStore.collection("user").doc(user.uid).get();
+    if (collectionStream['admin']){
+      Navigator.pushReplacementNamed(context, "/admin_page");
+    }
+    else {
+      print("Is not admin");
+    }
+      print(collectionStream);
+  }
   whichlist(BuildContext context){
 
     if (uploadlist == true){
