@@ -21,7 +21,7 @@ class _AdminPageState extends State<AdminPage>{
           child: Column(
           //mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            CustomButton(buttonText: "Novo Curso",onPress: (){},)
+            CustomButton(buttonText: "Novo Curso",onPress: (){Navigator.pushNamed(context, '/novo_curso');},)
           ]
         )
         )
