@@ -16,8 +16,9 @@ class CustomTextField extends StatelessWidget {
   final bool password;
   final TextInputType keyboard;
   final TextEditingController controller;
+  final onChange;
   //construtor
-  CustomTextField({Key key,this.lable, this.password=false, this.keyboard=TextInputType.text, this.controller}) : super(key: key);
+  CustomTextField({Key key,this.lable, this.password=false, this.keyboard=TextInputType.text, this.controller, this.onChange}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -25,6 +26,7 @@ class CustomTextField extends StatelessWidget {
       child: FractionallySizedBox(
         widthFactor: 0.8,
         child: TextField(
+          onChanged: this.onChange,
           controller: this.controller,
           keyboardType: this.keyboard,
           autofocus: false,

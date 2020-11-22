@@ -1,5 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_app/components/CustomTextField.dart';
 import 'package:flutter_app/components/ListItem.dart';
 import 'package:flutter_app/screen/FolderPage.dart';
 class IndexCourse extends StatefulWidget {
@@ -27,7 +28,7 @@ class _IndexCourseState extends State<IndexCourse>{
     QuerySnapshot info  =await FirebaseFirestore.instance.collection("curso").get();
     return info.docs;
   }
-
+  TextEditingController _inputController = TextEditingController(text:"");
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -36,8 +37,11 @@ class _IndexCourseState extends State<IndexCourse>{
       ),
       body:
         Center(
-          child: ListView.builder(
-            itemCount: items.length,
+          child: Column(
+            children: <Widget>[
+            CustomTextField(lable: "Pesquisa",controller: _inputController,onChange: (){},),
+           ListView.builder(
+            itemCount: items.length,shrinkWrap: true,
             itemBuilder: (context, index) {
               return ListTile(
                 title: ListItem(text: items[index].data()['nome'], onPress: (){
@@ -46,6 +50,7 @@ class _IndexCourseState extends State<IndexCourse>{
               );
             },
           )
+            ],)
         )
     );
           

@@ -26,6 +26,9 @@ class _FoulderPageState extends State<FoulderPage> {
         });
       });
     }
+    // else {
+      
+    // }
     super.initState();
   }
 
@@ -33,7 +36,7 @@ class _FoulderPageState extends State<FoulderPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Curso: ${foulder.data()['nome']}"),
+        title: Text("${foulder.data()['nome']}"),
       ),
       body:
         Center(
