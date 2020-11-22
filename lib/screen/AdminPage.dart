@@ -7,6 +7,7 @@ class AdminPage extends StatefulWidget {
 
 class _AdminPageState extends State<AdminPage>{
 
+  
 
   @override
   Widget build(BuildContext context) {
@@ -21,7 +22,8 @@ class _AdminPageState extends State<AdminPage>{
           child: Column(
           //mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            CustomButton(buttonText: "Novo Curso",onPress: (){Navigator.pushNamed(context, '/novo_curso');},)
+            CustomButton(buttonText: "Novo Curso",onPress: (){Navigator.pushNamed(context, '/novo_curso');},),
+            CustomButton(buttonText: "Cursos",onPress: (){Navigator.pushNamed(context, '/cursos');},)
           ]
         )
         )
