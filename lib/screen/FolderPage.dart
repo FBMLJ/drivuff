@@ -1,38 +1,39 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+
 import 'package:flutter_app/components/ListItem.dart';
-import 'package:flutter_app/screen/FolderPage.dart';
-class IndexCourse extends StatefulWidget {
+class FoulderPage extends StatefulWidget {
+  final foulder;
+
+  const FoulderPage({Key key, this.foulder}) : super(key: key);
   @override
-  _IndexCourseState createState() => _IndexCourseState();
+  _FoulderPageState createState() => _FoulderPageState(this.foulder);
 }
 
-class _IndexCourseState extends State<IndexCourse>{
+class _FoulderPageState extends State<FoulderPage> {
+  final foulder;
+  List<QueryDocumentSnapshot> items=[];
+  _FoulderPageState(this.foulder);
   
-  List<QueryDocumentSnapshot> items = [];
 
   @override
-  void initState()  {
-    FirebaseFirestore.instance.collection("curso").where('iscourse',isEqualTo: true).get().then((value) {
+  void initState(){
+    if (this.foulder.data()["iscourse"] == true){
+      FirebaseFirestore.instance.collection("curso").where('dono',isEqualTo: foulder.id).get().then((value) {
     
-      setState((){
-        items = value.docs;
+        setState((){
+          items = value.docs;
+        });
       });
-    });
+    }
     super.initState();
-  }
-
-
-  Future<dynamic> _request() async{
-    QuerySnapshot info  =await FirebaseFirestore.instance.collection("curso").get();
-    return info.docs;
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Cursos"),
+        title: Text("Curso: ${foulder.data()['nome']}"),
       ),
       body:
         Center(
@@ -48,8 +49,5 @@ class _IndexCourseState extends State<IndexCourse>{
           )
         )
     );
-          
   }
 }
-
-
