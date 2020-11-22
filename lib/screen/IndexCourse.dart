@@ -7,10 +7,22 @@ class IndexCourse extends StatefulWidget {
 }
 
 class _IndexCourseState extends State<IndexCourse>{
-  List<String> course = ["Oi","Gente"];
-  final items = List<String>.generate(10000, (i) => "Item $i");
-
   
+  List<QueryDocumentSnapshot> items = [];
+
+  @override
+  void initState()  {
+    FirebaseFirestore.instance.collection("curso").where('iscourse',isEqualTo: true).get().then((value) {
+
+      setState((){
+        items = value.docs;
+      });
+    });
+    print("Lucas");
+    super.initState();
+  }
+
+
   Future<dynamic> _request() async{
     QuerySnapshot info  =await FirebaseFirestore.instance.collection("curso").get();
     return info.docs;
@@ -27,10 +39,10 @@ class _IndexCourseState extends State<IndexCourse>{
       body:
         Center(
           child: ListView.builder(
-            itemCount: course.length,
+            itemCount: items.length,
             itemBuilder: (context, index) {
               return ListTile(
-                title: Text('${course[index]}'),
+                title: Text('${items[index].data()['nome']}'),
               );
             },
           )

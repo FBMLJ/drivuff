@@ -31,7 +31,6 @@ class _HomePageState extends State<Home> {
 
   @override
   void initState()  {
-    print('------------------------------------------------------------------------------------');
     User user = FirebaseAuth.instance.currentUser;
     if (user != null){
       _checkAdmin(user);

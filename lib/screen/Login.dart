@@ -3,8 +3,9 @@ import 'package:flutter/material.dart';
 import '../components/CustomTextField.dart';
 import '../components/CustomButton.dart';
 import '../model/User.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import '../components/Usuario.dart';
-
 
 //codigo responsavel pelo exibição da tela de login
 class LoginPage extends StatefulWidget {
