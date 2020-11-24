@@ -49,6 +49,7 @@ class _IndexCourseState extends State<IndexCourse>{
                 return;
               }
               FirebaseFirestore.instance.collection("curso").where('iscourse',isEqualTo: true).where("nome", isGreaterThan: search).where('nome', isLessThan: search + 'z').get().then((value) {
+                if (text != _inputController.text) return
                 setState(() {
                   items = value.docs;
                 });

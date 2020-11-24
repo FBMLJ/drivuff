@@ -14,6 +14,7 @@ class FoulderPage extends StatefulWidget {
 
 class _FoulderPageState extends State<FoulderPage> {
   final foulder;
+  QueryDocumentSnapshot user;
   final bool iscouse;
   List<QueryDocumentSnapshot> items=[];
   _FoulderPageState(this.foulder, this.iscouse);
@@ -28,8 +29,10 @@ class _FoulderPageState extends State<FoulderPage> {
           items = value.docs;
         });
       });
-      FirebaseFirestore.instance.collection("user").doc(FirebaseAuth.instance.currentUser.uid).get().then((value) => 
-        value
+      FirebaseFirestore.instance.collection("user").doc(FirebaseAuth.instance.currentUser.uid).get().then((value) {
+
+        this.user =value;
+      }
       
       );
     }
@@ -63,7 +66,7 @@ class _FoulderPageState extends State<FoulderPage> {
                   size: 40.0,
                 ),
               )
-            );;
+            );
             }
 
   }
