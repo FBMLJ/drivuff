@@ -44,7 +44,8 @@ class UserModel{
     Map<String, dynamic> map = {
       "nome" : this.name,
       "email" : this.email,
-      "admin": false
+      "admin": false,
+      "cursos": []
     };
 
     return map;

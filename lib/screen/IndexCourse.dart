@@ -41,7 +41,7 @@ class _IndexCourseState extends State<IndexCourse>{
           child: Column(
             children: <Widget>[
             CustomTextField(lable: "Pesquisa",controller: _inputController,onChange: (text){
-              String search = _inputController.text;
+              String search = text;
               if(search==""){
                 setState(() {
                   items = aux_items;
@@ -60,7 +60,7 @@ class _IndexCourseState extends State<IndexCourse>{
             itemBuilder: (context, index) {
               return ListTile(
                 title: ListItem(text: items[index].data()['nome'], onPress: (){
-                  Navigator.push(context, MaterialPageRoute(builder: (context) => FoulderPage(foulder: items[index],))
+                  Navigator.push(context, MaterialPageRoute(builder: (context) => FoulderPage(foulder: items[index],iscouse: true,))
                   );}),
               );
             },
