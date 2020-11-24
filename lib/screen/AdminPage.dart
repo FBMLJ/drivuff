@@ -23,7 +23,9 @@ class _AdminPageState extends State<AdminPage>{
           //mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             CustomButton(buttonText: "Novo Curso",onPress: (){Navigator.pushNamed(context, '/novo_curso');},),
-            CustomButton(buttonText: "Cursos",onPress: (){Navigator.pushNamed(context, '/cursos');},)
+            CustomButton(buttonText: "Cursos",onPress: (){Navigator.pushNamed(context, '/cursos');},),
+            CustomButton(buttonText: "Seus Cursos",onPress: (){Navigator.pushNamed(context, '/seguidos');},)
+
           ]
         )
         )

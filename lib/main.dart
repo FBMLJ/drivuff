@@ -6,6 +6,7 @@ import 'package:flutter_app/screen/Login.dart';
 import 'package:flutter_app/screen/AdminPage.dart';
 import 'package:flutter_app/screen/NovoCurso.dart';
 import 'package:flutter_app/screen/IndexCourse.dart';
+import 'package:flutter_app/screen/Seguidos.dart';
 
 import 'package:flutter_app/screen/FolderPage.dart';
 
@@ -61,7 +62,8 @@ class MyApp extends StatelessWidget {
             '/admin_page': (context) => AdminPage(),
             '/novo_curso': (context) => NovoCurso(),
             '/cursos': (context) => IndexCourse(),
-            '/foulder': (context) => FoulderPage()
+            '/foulder': (context) => FoulderPage(),
+            '/seguidos': (context) => Seguidos()
             
             }
           )
