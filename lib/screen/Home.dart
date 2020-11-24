@@ -33,21 +33,29 @@ class _HomePageState extends State<Home> {
   void initState()  {
     User user = FirebaseAuth.instance.currentUser;
     if (user != null){
-      _checkAdmin(user);
-    }
-
-    super.initState();
-  }
-  Future _checkAdmin(User user) async{
+      
     FirebaseFirestore firebaseStore = FirebaseFirestore.instance;
-    DocumentSnapshot collectionStream = await firebaseStore.collection("user").doc(user.uid).get();
+    firebaseStore.collection("user").doc(user.uid).get().then((collectionStream){
+
     if (collectionStream['admin']){
       Navigator.pushReplacementNamed(context, "/admin_page");
     }
     else {
-      print("Is not admin");
+      firebaseStore.collection("user").where("admin",isEqualTo: true).get().then((value) {
+        print("--------------------------");
+        if (value.docs.length==0){
+          print("PAssei aqui");
+          firebaseStore.collection("user").doc(user.uid).update({'admin': true}).then((value) => Navigator.pushReplacementNamed(context, "/admin_page"));
+        }
+        else{
+          super.initState();
+        }
+      });
     }
-      print(collectionStream);
+    });
+  
+    }
+    
   }
   whichlist(BuildContext context){
 

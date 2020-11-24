@@ -45,7 +45,9 @@ class UserModel{
       "nome" : this.name,
       "email" : this.email,
       "admin": false,
-      "cursos": []
+      "cursos": [],
+      "curtidas": [],
+      "discurtidas": []
     };
 
     return map;
