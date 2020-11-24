@@ -1,3 +1,5 @@
+
+
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -14,11 +16,11 @@ class FoulderPage extends StatefulWidget {
 
 class _FoulderPageState extends State<FoulderPage> {
   final foulder;
-  QueryDocumentSnapshot user;
+  Map user;
   final bool iscouse;
   List<QueryDocumentSnapshot> items=[];
   _FoulderPageState(this.foulder, this.iscouse);
-  
+  bool ehSeguido = false;  
 
   @override
   void initState(){
@@ -30,8 +32,10 @@ class _FoulderPageState extends State<FoulderPage> {
         });
       });
       FirebaseFirestore.instance.collection("user").doc(FirebaseAuth.instance.currentUser.uid).get().then((value) {
-
-        this.user =value;
+        setState(() {
+          this.user =value.data();
+        });
+        if (this.user["cursos"].contains(foulder.id)) setState(() {this.ehSeguido=true;});
       }
       
       );
@@ -44,10 +48,20 @@ class _FoulderPageState extends State<FoulderPage> {
 
   _star_icon(){
     if ( this.iscouse){
+        if(!this.ehSeguido){
+
             return Padding(
               padding: EdgeInsets.only(right: 20.0),
               child: GestureDetector(
-                onTap: () {},
+                onTap: () {
+                  this.user["cursos"].add(foulder.id);
+                  FirebaseFirestore.instance.collection("user").doc(FirebaseAuth.instance.currentUser.uid)
+                  .update({"cursos": this.user["cursos"]}).then((value){
+                    setState(() {
+                      ehSeguido = true;
+                    });
+                  });
+                },
                 child: Icon(
                   Icons.star_border,
                   size: 40.0,
@@ -55,6 +69,28 @@ class _FoulderPageState extends State<FoulderPage> {
               )
             );
           }
+        else{
+
+            return Padding(
+              padding: EdgeInsets.only(right: 20.0),
+              child: GestureDetector(
+                onTap: () {
+                  this.user["cursos"].remove(foulder.id);
+                  FirebaseFirestore.instance.collection("user").doc(FirebaseAuth.instance.currentUser.uid)
+                  .update({"cursos": this.user["cursos"]}).then((value){
+                    setState(() {
+                      ehSeguido = false;
+                    });
+                  });
+                },
+                child: Icon(
+                  Icons.star,
+                  size: 40.0,
+                ),
+              )
+            );
+          }
+        }
           else{
             
             return  Padding(

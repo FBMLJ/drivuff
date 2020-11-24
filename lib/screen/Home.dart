@@ -42,9 +42,8 @@ class _HomePageState extends State<Home> {
     }
     else {
       firebaseStore.collection("user").where("admin",isEqualTo: true).get().then((value) {
-        print("--------------------------");
+
         if (value.docs.length==0){
-          print("PAssei aqui");
           firebaseStore.collection("user").doc(user.uid).update({'admin': true}).then((value) => Navigator.pushReplacementNamed(context, "/admin_page"));
         }
         else{
