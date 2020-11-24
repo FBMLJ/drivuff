@@ -11,11 +11,12 @@ class IndexCourse extends StatefulWidget {
 class _IndexCourseState extends State<IndexCourse>{
   
   List<QueryDocumentSnapshot> items = [];
+  List<QueryDocumentSnapshot> aux_items = [];
 
   @override
   void initState()  {
     FirebaseFirestore.instance.collection("curso").where('iscourse',isEqualTo: true).get().then((value) {
-    
+      aux_items = value.docs;
       setState((){
         items = value.docs;
       });
@@ -25,7 +26,7 @@ class _IndexCourseState extends State<IndexCourse>{
 
 
   Future<dynamic> _request() async{
-    QuerySnapshot info  =await FirebaseFirestore.instance.collection("curso").get();
+    QuerySnapshot info  =await FirebaseFirestore.instance.collection("curso").orderBy("nome").get();
     return info.docs;
   }
   TextEditingController _inputController = TextEditingController(text:"");
@@ -39,7 +40,21 @@ class _IndexCourseState extends State<IndexCourse>{
         Center(
           child: Column(
             children: <Widget>[
-            CustomTextField(lable: "Pesquisa",controller: _inputController,onChange: (){},),
+            CustomTextField(lable: "Pesquisa",controller: _inputController,onChange: (text){
+              String search = _inputController.text;
+              if(search==""){
+                setState(() {
+                  items = aux_items;
+                });
+                return;
+              }
+              FirebaseFirestore.instance.collection("curso").where('iscourse',isEqualTo: true).where("nome", isGreaterThan: search).where('nome', isLessThan: search + 'z').get().then((value) {
+                setState(() {
+                  items = value.docs;
+                });
+              });
+            },
+            ),
            ListView.builder(
             itemCount: items.length,shrinkWrap: true,
             itemBuilder: (context, index) {
