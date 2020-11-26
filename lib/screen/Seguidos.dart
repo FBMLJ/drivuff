@@ -19,9 +19,7 @@ class _SeguidosState extends State<Seguidos>{
   void initState()  {
     FirebaseFirestore.instance.collection("user").doc(FirebaseAuth.instance.currentUser.uid).get().then((value) {
       var curso = FirebaseFirestore.instance.collection("curso");
-      print("oooooooooooooooooooooooooo");
       value.data()["cursos"].forEach((elem){
-        print("---------------------------------------");
         print(elem);
         curso.doc(elem).get().then((value)  {
           setState(() {
@@ -34,11 +32,6 @@ class _SeguidosState extends State<Seguidos>{
   }
 
 
-  Future<dynamic> _request() async{
-    QuerySnapshot info  =await FirebaseFirestore.instance.collection("curso").orderBy("nome").get();
-    return info.docs;
-  }
-  TextEditingController _inputController = TextEditingController(text:"");
   @override
   Widget build(BuildContext context) {
     return Scaffold(
