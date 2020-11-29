@@ -144,10 +144,10 @@ class _FileuploadState extends State<Fileupload> {
                 });
                 filePicker(context);
                 var item = new Fileitem(
-                  title: fileName,
+                  title: fileName.toString(),
                   date: DateTime.now(),
                   filetype: "image",
-                  id:fileName,
+                  id:file.path,
                   done: true,
                   aprovedbyadmin: false,
                   url: "images/filename",

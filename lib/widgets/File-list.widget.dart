@@ -22,14 +22,14 @@ class _FilelistuploadState extends State<Filelistupload> {
       controller.changeSelection("upload");
     }
 
-    return Observer (builder: (_) => ListView.builder(
+    return Observer (name: 'test', builder: (_) => ListView.builder(
       padding: EdgeInsets.only(left: 40),
       itemCount: store.files.length,
       itemBuilder: (context, index) {
         var item = store.files[index];
         return ListTile(
               title: Text(item.title, style: TextStyle(fontSize: 18, color: item.done ? Colors.black.withOpacity(0.2) : Colors.black,),),
-              subtitle: Text(_dateFormat.format(item.date),),);
+              subtitle: Text((item.url),),);
       }
       ),
     );
